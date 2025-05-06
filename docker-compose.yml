@@ -1,0 +1,28 @@
+# IMPORTANT NOTES:
+# If you will execute this compose file more than one time, you need
+# to do some changes: ports, project name (in env file) and mysql volume name
+# Also, you need to wait acouple of minutes before login to phpmyadmin. If not
+# you will acquire an error #2002 - Connection refused &mdash; El servidor no está respondiendo (o el zócalo local al servidor MySQL no está configurado correctamente).
+services:
+  php:
+    container_name: gdp_back
+    build:
+      context: .
+    environment:
+      APP_ENV: dev
+      PHP_ERROR_REPORTING: -1
+      PHP_ERROR_DISPLAY: -1
+      PHP_STARTUP_ERROR_DISPLAY: -1
+      APP_TIMEZONE: 'America/Argentina/Buenos_Aires'
+    ports:
+      - 8180:80
+      - 9100:9000
+    volumes:
+      - .:/var/www/
+    networks:
+      - local
+    extra_hosts:
+      - "host.docker.internal:host-gateway" # for windows and macos
+networks:
+  local:
+    driver: bridge

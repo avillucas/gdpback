@@ -1,0 +1,56 @@
+{
+    "name": "gdp/back",
+    "description": "The backend of the GDP project",
+    "version": "1.0.0",
+    "keywords": [
+        "microframework",
+        "rest",
+        "router",
+        "psr7"
+    ],
+     "license": "MIT",
+    "authors": [
+        {
+            "name": "Lucas Avila",
+            "email": "avillucas@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "ext-json": "*",
+        "monolog/monolog": "^2.8",
+        "php-di/php-di": "^6.4",
+        "slim/psr7": "^1.5",
+        "slim/slim": "^4.10",
+        "slim/twig-view": "^3.4"
+    },
+    "require-dev": {
+        "jangregor/phpstan-prophecy": "^1.0.0",
+        "phpspec/prophecy-phpunit": "^2.0",
+        "phpstan/extension-installer": "^1.2.0",
+        "phpstan/phpstan": "^1.8",
+        "phpunit/phpunit": "^9.5.26",
+        "squizlabs/php_codesniffer": "^3.7"
+    },
+    "config": {
+        "allow-plugins": {
+            "phpstan/extension-installer": true
+        },
+        "process-timeout": 0,
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public",
+        "test": "phpunit"
+    }
+}
